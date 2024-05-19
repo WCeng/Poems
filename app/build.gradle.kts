@@ -60,14 +60,16 @@ dependencies {
 
     val room_version = "2.6.1"
 
-    kapt("androidx.room:room-compiler:$room_version")
-
     implementation("androidx.room:room-runtime:$room_version")
-//    annotationProcessor("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")
     // optional - Test helpers
     testImplementation("androidx.room:room-testing:$room_version")
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$room_version")
+    implementation("androidx.paging:paging-runtime:3.1.0-beta01")
+
+    implementation("com.google.code.gson:gson:2.8.5")
+    implementation("androidx.lifecycle:lifecycle-viewmodel:2.8.0")
 }

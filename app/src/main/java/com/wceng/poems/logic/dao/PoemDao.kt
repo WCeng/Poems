@@ -1,5 +1,7 @@
 package com.wceng.poems.logic.dao
 
+import androidx.lifecycle.LiveData
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -11,23 +13,38 @@ import com.wceng.poems.logic.model.Poem
 interface PoemDao {
 
     @Insert
-    suspend fun insertPoem(poem: Poem)
+    fun insertPoem(poem: Poem)
+
+    @Insert
+    fun insertPoems(poems: List<Poem>)
 
     @Delete
-    suspend fun deletePoem(poem: Poem)
+    fun deletePoem(poem: Poem)
 
     @Query("DELETE FROM Poem")
-    suspend fun deleteAllPoems()
+    fun deleteAllPoems()
 
     @Update
-    suspend fun updatePoem(poem: Poem)
+    fun updatePoem(poem: Poem)
 
     @Query("SELECT * FROM Poem")
-    suspend fun queryAllPoem(): List<Poem>
+    fun queryAllPoem(): PagingSource<Int, Poem>
 
     @Query("SELECT * FROM Poem WHERE poet = :poet")
-    suspend fun queryPoemByPoet(poet: String): List<Poem>
+    fun queryPoemByPoet(poet: String): PagingSource<Int, Poem>
 
     @Query("SELECT * FROM Poem WHERE id = :id")
-    suspend fun queryPoemById(id: Long): List<Poem>
+    fun queryPoemById(id: Long): PagingSource<Int, Poem>
+
+    @Query("SELECT * FROM Poem WHERE title = :title")
+    fun queryPoemByTitle(title: String): PagingSource<Int, Poem>
+
+    @Query(
+        "SELECT * FROM Poem WHERE title  LIKE '%' || :s || '%' " +
+                "OR poet LIKE '%' || :s || '%'" +
+                "OR dynasty LIKE '%' || :s || '%'" +
+                "OR content LIKE '%' || :s || '%'" +
+                ""
+    )
+    fun queryPoemsLike(s: String): PagingSource<Int, Poem>
 }

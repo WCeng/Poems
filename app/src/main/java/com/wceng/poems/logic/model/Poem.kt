@@ -2,8 +2,11 @@ package com.wceng.poems.logic.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.wceng.poems.util.Converters
 
 @Entity
+@TypeConverters(Converters::class)
 data class Poem(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
@@ -15,5 +18,6 @@ data class Poem(
     val annotation: String,
     val background: String,
     val appreciation: String,
-    val labels: String
+    val labels: List<String>
 )
+
