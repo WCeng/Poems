@@ -9,5 +9,6 @@ data class Poet(
     val id: Long,
     val name: String,
     val dynasty: String,
-    val des: String
+    val des: String,
+    val imgUrl: String
 )

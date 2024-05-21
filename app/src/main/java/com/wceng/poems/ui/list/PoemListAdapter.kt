@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.wceng.poems.databinding.PoemItemBinding
 import com.wceng.poems.logic.model.Poem
+import com.wceng.poems.ui.detail.PoemDetailActivity
 
 class PoemListAdapter : PagingDataAdapter<Poem, PoemListAdapter.PoemViewHolder>(COMPARATOR) {
 
@@ -43,6 +44,13 @@ class PoemListAdapter : PagingDataAdapter<Poem, PoemListAdapter.PoemViewHolder>(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PoemViewHolder {
         val binding = PoemItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PoemViewHolder(binding)
+        val viewHolder = PoemViewHolder(binding)
+        binding.root.setOnClickListener {
+            val poem = getItem(viewHolder.bindingAdapterPosition)
+            poem?.let {
+                PoemDetailActivity.actionShowDetail(parent.context, poem.id, poem.poet)
+            }
+        }
+        return viewHolder
     }
 }

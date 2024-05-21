@@ -33,11 +33,17 @@ interface PoemDao {
     @Query("SELECT * FROM Poem WHERE poet = :poet")
     fun queryPoemByPoet(poet: String): PagingSource<Int, Poem>
 
+    @Query("SELECT * FROM Poem WHERE labels like '%' || :label || '%'")
+    fun queryPoemByLabel(label: String): PagingSource<Int, Poem>
+
     @Query("SELECT * FROM Poem WHERE id = :id")
-    fun queryPoemById(id: Long): PagingSource<Int, Poem>
+    fun queryPoemById(id: Long): LiveData<Poem>
 
     @Query("SELECT * FROM Poem WHERE title = :title")
     fun queryPoemByTitle(title: String): PagingSource<Int, Poem>
+
+    @Query("SELECT * FROM Poem WHERE collected = 1")
+    fun queryCollectedPoems(): PagingSource<Int, Poem>
 
     @Query(
         "SELECT * FROM Poem WHERE title  LIKE '%' || :s || '%' " +

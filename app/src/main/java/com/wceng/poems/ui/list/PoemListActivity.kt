@@ -3,6 +3,7 @@ package com.wceng.poems.ui.list
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,8 @@ class PoemListActivity : AppCompatActivity() {
         const val ACTION_TITLE = "action_title"
         const val ACTION_POET = "action_poet"
         const val ACTION_LIKE = "action_all"
+        const val ACTION_LABEL = "action_label"
+        const val ACTION_COLLECTED = "action_collected"
 
         fun actionSearchResult(context: Context, query: String, actionType: String) {
             val intent = Intent(context, PoemListActivity::class.java)
@@ -34,20 +37,23 @@ class PoemListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPoemListBinding
 
     private val viewModel by lazy {
-        ViewModelProvider(this, PoemListViewModelFactory())[PoemListViewModel::class]
+        ViewModelProvider(this, PoemListViewModelFactory())[PoemListViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPoemListBinding.inflate(layoutInflater)
+        setSupportActionBar(binding.poemListToolbar)
         setContentView(binding.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val query = intent.getStringExtra("query")!!
         val actionType = intent.getStringExtra("actionType")!!
 
         binding.poemListRv.layoutManager = LinearLayoutManager(this)
         val poemAdapter = PoemListAdapter()
         binding.poemListRv.adapter = poemAdapter
-        binding.poemListToolbar.title = getString(R.string.search_result, query)
+        supportActionBar?.title = query
 
         poemAdapter.addLoadStateListener { states ->
             when (states.refresh) {
@@ -75,6 +81,13 @@ class PoemListActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

@@ -24,6 +24,14 @@ class PoemListViewModel(private val repository: Repository) : ViewModel() {
                 return repository.queryPoemByTitle(query).cachedIn(viewModelScope)
             }
 
+            PoemListActivity.ACTION_LABEL -> {
+                return repository.queryPoemByLabel(query).cachedIn(viewModelScope)
+            }
+
+            PoemListActivity.ACTION_COLLECTED -> {
+                return repository.queryCollectedPoems().cachedIn(viewModelScope)
+            }
+
             else -> {
                 throw IllegalArgumentException("actionType is unKnow")
             }

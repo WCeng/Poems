@@ -3,6 +3,7 @@
     <style name="Base.Theme.Poems" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your light theme here. -->
          <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:statusBarColor">@color/statusBarColor</item>
     </style>
 
     <style name="Theme.Poems" parent="Base.Theme.Poems" />

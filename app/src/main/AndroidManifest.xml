@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".PoemApp"
         android:allowBackup="true"
@@ -14,6 +16,17 @@
         android:theme="@style/Theme.Poems"
         tools:targetApi="31">
         <activity
+            android:name=".ui.label.LabelActivity"
+            android:label="@string/label"
+            android:exported="false" />
+        <activity
+            android:name=".ui.poet.PoetActivity"
+            android:label="@string/poet"
+            android:exported="false" />
+        <activity
+            android:name=".ui.detail.PoemDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.list.PoemListActivity"
             android:exported="false" />
         <activity
@@ -25,6 +38,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
+
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
 
 </manifest>

@@ -18,6 +18,7 @@ data class Poem(
     val annotation: String,
     val background: String,
     val appreciation: String,
-    val labels: List<String>
+    val labels: List<String>,
+    var collected: Boolean
 )
 

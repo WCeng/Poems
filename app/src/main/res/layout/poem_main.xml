@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    app:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/poemTitleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/poemDynastyPoetTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/poemContentTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="@dimen/textNormal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp">
+
+            <ImageView
+                android:id="@+id/audioIv"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+
+                android:src="@drawable/baseline_volume_up_24" />
+
+            <ImageView
+                android:id="@+id/collectionIv"
+                android:layout_width="25dp"
+                android:src="@drawable/baseline_star_border_24"
+                android:layout_marginStart="10dp"
+                android:layout_height="25dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

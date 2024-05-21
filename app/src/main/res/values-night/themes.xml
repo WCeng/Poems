@@ -3,5 +3,6 @@
     <style name="Base.Theme.Poems" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Customize your dark theme here. -->
          <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:statusBarColor">@color/statusBarColor</item>
     </style>
 </resources>

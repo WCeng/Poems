@@ -3,4 +3,13 @@
     <string name="search">搜索</string>
     <string name="load_error">加载错误</string>
     <string name="search_result">关于“%s”的搜索结果</string>
+    <string name="translation">译文</string>
+    <string name="annotation">注释</string>
+    <string name="background">背景</string>
+    <string name="appreciation">赏析</string>
+    <string name="poet">诗人</string>
+    <string name="open_drawer">打开抽屉</string>
+    <string name="label">标签</string>
+    <string name="not_support_chinese_volume">不支持中文语音</string>
+    <string name="my_collected_poems">我的收藏</string>
 </resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group>
+        <item
+            android:id="@+id/poet"
+            android:icon="@drawable/baseline_person_24"
+            android:title="@string/poet" />
+        <item
+            android:id="@+id/label"
+            android:icon="@drawable/baseline_label_24"
+            android:title="@string/label" />
+    </group>
+</menu>

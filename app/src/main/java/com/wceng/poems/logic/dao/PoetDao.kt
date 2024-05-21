@@ -27,8 +27,11 @@ interface PoetDao {
     suspend fun update(poet: Poet)
 
     @Query("select * from Poet where name = :name")
-    fun queryByName(name: String): LiveData<List<Poet>>
+    fun queryByName(name: String): LiveData<Poet>
+
+    @Query("select * from Poet where name like '%' || :s || '%'")
+    fun queryLike(s: String): LiveData<List<Poet>>
 
     @Query("select * from Poet")
-    fun queryAllPoets(): LiveData<List<Poet>>
+    suspend fun queryAllPoets(): List<Poet>
 }
